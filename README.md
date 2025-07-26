@@ -1,10 +1,10 @@
-# XXH3 File Hasher
+# Hash Forge
 
 A fast, privacy-focused file hashing tool built with Go WebAssembly and React. Calculate XXH3 hashes of your files directly in your browser - no files ever leave your device.
 
-🌐 **[Live Demo](https://achintya-7.github.io/hasher-wasm/)**
+🌐 **[Live Demo](https://achintya-7.github.io/hash-forge/)**
 
-![XXH3 File Hasher](https://img.shields.io/badge/XXH3-File%20Hasher-blue?style=for-the-badge)
+![Hash Forge](https://img.shields.io/badge/Hash-Forge-blue?style=for-the-badge)
 ![Go](https://img.shields.io/badge/Go-1.24-00ADD8?style=flat&logo=go)
 ![React](https://img.shields.io/badge/React-19.1-61DAFB?style=flat&logo=react)
 ![WebAssembly](https://img.shields.io/badge/WebAssembly-654FF0?style=flat&logo=webassembly)
@@ -31,8 +31,8 @@ A fast, privacy-focused file hashing tool built with Go WebAssembly and React. C
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/achintya-7/hasher-wasm.git
-   cd hasher-wasm
+   git clone https://github.com/achintya-7/hash-forge.git
+   cd hash-forge
    ```
 
 2. **Install Node.js dependencies**
@@ -107,7 +107,7 @@ This project is configured for automatic deployment to GitHub Pages using GitHub
    ```
 
 4. **Access your deployed app:**
-   Your app will be available at: `https://yourusername.github.io/hasher-wasm/`
+   Your app will be available at: `https://yourusername.github.io/hash-forge/`
 
 ### Manual Deployment
 
@@ -129,13 +129,13 @@ If you prefer to deploy manually:
 1. **Build the Docker image**
 
    ```bash
-   docker build -t hasher-wasm .
+   docker build -t hash-forge .
    ```
 
 2. **Run the container**
 
    ```bash
-   docker run -p 3000:80 --name hasher-wasm-container hasher-wasm
+   docker run -p 3000:80 --name hash-forge-container hash-forge
    ```
 
 3. **Access the application**
@@ -145,19 +145,19 @@ If you prefer to deploy manually:
 
 ```bash
 # Stop the container
-docker stop hasher-wasm-container
+docker stop hash-forge-container
 
 # Remove the container
-docker rm hasher-wasm-container
+docker rm hash-forge-container
 
 # View logs
-docker logs hasher-wasm-container
+docker logs hash-forge-container
 ```
 
 ## 🏗️ Project Structure
 
 ```
-hasher-wasm/
+hash-forge/
 ├── go/                     # Go WebAssembly source
 │   ├── main.go            # Main WASM entry point
 │   ├── go.mod             # Go module definition
@@ -267,7 +267,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you encounter any issues or have questions:
 
-1. Check the [Issues](https://github.com/achintya-7/hasher-wasm/issues) page
+1. Check the [Issues](https://github.com/achintya-7/hash-forge/issues) page
 2. Create a new issue with detailed information
 3. Contact the maintainer: [@achintya-7](https://github.com/achintya-7)
 

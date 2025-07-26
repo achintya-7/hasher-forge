@@ -173,7 +173,7 @@ const App: React.FC = () => {
             <Hash className="h-8 w-8 text-white" />
           </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            XXH3 File Hasher
+            Hash Forge
           </h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Calculate XXH3 hash of your files. All processing happens locally in your browser.

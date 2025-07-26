@@ -1,4 +1,4 @@
-module hasher-wasm-go
+module hash-forge-go
 
 go 1.24.2
 
