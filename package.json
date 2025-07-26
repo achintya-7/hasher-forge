@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "build:wasm": "cd go && GOOS=js GOARCH=wasm go build -o ../public/main.wasm && cd ..",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "docker-build-and-run": "./docker-build.sh"
   },
   "dependencies": {
     "@radix-ui/react-progress": "^1.1.7",

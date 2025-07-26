@@ -36,6 +36,35 @@ func hashFile(this js.Value, args []js.Value) interface{} {
 	buffer := make([]byte, length)
 	js.CopyBytesToGo(buffer, fileData)
 
+	// Use a buffer of 256kb for performance
+	bufferSize := 256 * 1024 // 256kb
+	if length > bufferSize {
+		hasher := xxh3.New()
+
+		for offset := 0; offset < length; {
+			end := offset + bufferSize
+			if end > length {
+				end = length
+			}
+
+			chunk := buffer[offset:end]
+			if len(chunk) == 0 {
+				break
+			}
+
+			_, err := hasher.Write(chunk)
+			if err != nil {
+				js.Global().Call("console.error", "Failed to write data to the running hash:", err.Error())
+				return nil
+			}
+
+			offset += len(chunk)
+		}
+		finalHash := hasher.Sum64()
+		fmt.Println("Hash calculated (chunked):", finalHash)
+		return fmt.Sprintf("%d", finalHash)
+	}
+
 	// Calculate hash directly
 	finalHash := xxh3.Hash(buffer)
 	fmt.Println("Hash calculated:", finalHash)
