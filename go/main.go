@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	c := make(chan struct{})
+	c := make(chan struct{}, 0)
 	registerCallbacks()
 	<-c
 }
@@ -36,16 +36,10 @@ func hashFile(this js.Value, args []js.Value) interface{} {
 	buffer := make([]byte, length)
 	js.CopyBytesToGo(buffer, fileData)
 
-	// Calculate hash
-	hasher := xxh3.New()
-	_, err := hasher.Write(buffer)
-	if err != nil {
-		fmt.Printf("Error calculating hash: %v\n", err)
-		return nil
-	}
+	// Calculate hash directly
+	finalHash := xxh3.Hash(buffer)
+	fmt.Println("Hash calculated:", finalHash)
 
-	finalHash := hasher.Sum64()
-	hashStr := fmt.Sprintf("%d", finalHash)
-
-	return js.ValueOf(hashStr)
+	// Convert to string
+	return fmt.Sprintf("%d", finalHash)
 }
