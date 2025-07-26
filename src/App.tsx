@@ -35,12 +35,14 @@ const App: React.FC = () => {
       try {
         console.log('Loading WASM...');
         const script = document.createElement('script');
-        script.src = '/wasm_exec.js';
+        // Use Vite's base URL for correct path resolution
+        const baseUrl = import.meta.env.BASE_URL;
+        script.src = `${baseUrl}wasm_exec.js`;
         script.onload = async () => {
           console.log('wasm_exec.js loaded');
           const go = new window.Go();
           const result = await WebAssembly.instantiateStreaming(
-            fetch('/main.wasm'),
+            fetch(`${baseUrl}main.wasm`),
             go.importObject
           );
           console.log('WASM instantiated');
@@ -220,15 +222,16 @@ const App: React.FC = () => {
                       size="sm"
                       onClick={calculateAllHashes}
                       disabled={!wasmLoaded || files.every(f => f.status !== 'pending')}
+                      className="bg-green-50 border-green-200 text-green-700 hover:bg-green-100 hover:border-green-300 focus:bg-green-200 focus:border-green-400 focus:ring-2 focus:ring-green-300 focus:outline-none disabled:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400 transition-all duration-200"
                     >
                       {files.some(f => f.status === 'loading' || f.status === 'calculating') ? (
                         <>
-                          <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                          <Loader2 className="h-4 w-4 mr-2 animate-spin text-green-600" />
                           Processing...
                         </>
                       ) : (
                         <>
-                          <Hash className="h-4 w-4 mr-2" />
+                          <Hash className="h-4 w-4 mr-2 text-green-600" />
                           Calculate All Hashes
                         </>
                       )}
@@ -306,7 +309,7 @@ const App: React.FC = () => {
                             {fileItem.status === 'loading' && (
                               <div className="flex items-center gap-2">
                                 <Loader2 className="h-4 w-4 animate-spin" />
-                                Loading file...
+                                Processing file...
                               </div>
                             )}
                             {fileItem.status === 'calculating' && (
