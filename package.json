@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "build:wasm": "cd go && GOOS=js GOARCH=wasm go build -o ../public/main.wasm && cd ..",
     "preview": "vite preview",
-    "docker-build-and-run": "./docker-build.sh"
+    "docker-build-and-run": "./docker-build.sh",
+    "deploy": "npm run build:wasm && npm run build"
   },
   "dependencies": {
     "@radix-ui/react-progress": "^1.1.7",

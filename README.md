@@ -2,6 +2,8 @@
 
 A fast, privacy-focused file hashing tool built with Go WebAssembly and React. Calculate XXH3 hashes of your files directly in your browser - no files ever leave your device.
 
+🌐 **[Live Demo](https://achintya-7.github.io/hasher-wasm/)**
+
 ![XXH3 File Hasher](https://img.shields.io/badge/XXH3-File%20Hasher-blue?style=for-the-badge)
 ![Go](https://img.shields.io/badge/Go-1.24-00ADD8?style=flat&logo=go)
 ![React](https://img.shields.io/badge/React-19.1-61DAFB?style=flat&logo=react)
@@ -75,11 +77,51 @@ A fast, privacy-focused file hashing tool built with Go WebAssembly and React. C
 
 ## 🐳 Docker Deployment
 
-### Using Docker Compose (Recommended)
+### Using Docker (Recommended for Self-Hosting)
 
 1. **Build and run with Docker**
    ```bash
    ./docker-build.sh
+   ```
+
+## 🚀 GitHub Pages Deployment
+
+### Automatic Deployment (Recommended)
+
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
+
+1. **Fork or clone this repository to your GitHub account**
+
+2. **Enable GitHub Pages in your repository:**
+
+   - Go to your repository settings
+   - Navigate to "Pages" section
+   - Under "Source", select "GitHub Actions"
+
+3. **Push to the master branch:**
+
+   ```bash
+   git add .
+   git commit -m "Deploy to GitHub Pages"
+   git push origin master
+   ```
+
+4. **Access your deployed app:**
+   Your app will be available at: `https://yourusername.github.io/hasher-wasm/`
+
+### Manual Deployment
+
+If you prefer to deploy manually:
+
+1. **Build the project locally:**
+
+   ```bash
+   npm run deploy
+   ```
+
+2. **Deploy using GitHub CLI (if installed):**
+   ```bash
+   gh workflow run deploy.yml
    ```
 
 ### Manual Docker Commands
